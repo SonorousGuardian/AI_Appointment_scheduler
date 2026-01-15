@@ -2,8 +2,6 @@
 
 A full-stack TypeScript application that intelligently parses natural language appointment requests and converts them into structured data using OCR, NLP, and entity extraction.
 
-![Tests](https://img.shields.io/badge/tests-61%20passing-brightgreen)
-![Coverage](https://img.shields.io/badge/coverage-98%25-brightgreen)
 ![TypeScript](https://img.shields.io/badge/TypeScript-5.9-blue)
 
 ## 🌟 Features
@@ -194,28 +192,8 @@ curl -X POST http://localhost:3000/api/v1/parse \
 - **API Response Time**: ~100ms (text), ~2s (OCR)
 - **Test Execution**: 10s for 61 tests
 - **Coverage**: 98% of core logic
-
-## 🤝 Contributing
-
-Contributions are welcome! Please ensure:
-
-1. All tests pass (`npm test`)
-2. Code coverage remains above 70%
-3. Follow existing code style
-
-## 📄 License
-
-ISC
-
 ## 👨‍💻 Author
-
 SonorousGuardian
-
-## 🙏 Acknowledgments
-
-- Tesseract.js for OCR capabilities
-- Chrono-node for intelligent date parsing
-- The open-source community
 
 ---
 
