@@ -136,21 +136,6 @@ curl -X POST http://localhost:3000/api/v1/parse \
   "status": "ok"
 }
 ```
-
-## 🔒 Security Features
-
-- ✅ Input sanitization (XSS, SQL injection prevention)
-- ✅ Rate limiting (30 requests/minute)
-- ✅ File validation (type, size limits)
-- ✅ Error tracking with correlation IDs
-- ✅ Comprehensive error codes
-
-## 🧪 Testing
-
-- **Unit Tests**: 61 tests covering all services
-- **Test Coverage**: 98% of business logic
-- **Frameworks**: Jest + ts-jest
-
 **Test Suites:**
 
 - ExtractionService (30 tests) - Department & time extraction
