@@ -5,6 +5,17 @@
 **Local:** `http://localhost:3000`  
 **Public (ngrok):** `https://your-ngrok-url.ngrok-free.dev`
 
+## 📸 Postman Examples
+
+![Dentist Appointment](screenshots/postman-dentist.png)
+_Example: Booking a dentist appointment_
+
+![ENT Specialist](screenshots/postman-ent.png)
+_Example: Booking an ENT specialist_
+
+![General Checkup](screenshots/postman-general.png)
+_Example: Booking a general checkup_
+
 ---
 
 ## Endpoints
