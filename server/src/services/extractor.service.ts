@@ -8,7 +8,50 @@ export interface ExtractedEntities {
 }
 
 export class ExtractionService {
-  private departments = ['cardiology', 'cardiologist', 'neurology', 'neurologist', 'dentist', 'dermatology', 'dermatologist', 'general', 'orthopedics', 'orthopedist'];
+  // Comprehensive list of medical departments and specialist keywords
+  private departments = [
+    // Original departments
+    'cardiology', 'cardiologist',
+    'neurology', 'neurologist',
+    'dentist', 'dental', 'dentistry',
+    'dermatology', 'dermatologist',
+    'general',
+    'orthopedics', 'orthopedist', 'ortho',
+    
+    // General / Primary Care
+    'gp', 'general practitioner', 'physician', 'family doctor', 'general practice', 'general medicine', 'family medicine',
+    
+    // Eye Care
+    'ophthalmologist', 'ophthalmology', 'optometrist', 'optometry', 'eye doctor', 'eye specialist',
+    
+    // ENT
+    'ent', 'ent specialist', 'otolaryngologist', 'otolaryngology',
+    
+    // Women's Health
+    'gynecologist', 'gynecology', 'gynae', 'gynac', 'obgyn', 'obstetrics and gynecology',
+    
+    // Children
+    'pediatrician', 'pediatrics', 'child doctor', 'paediatrician',
+    
+    // Mental Health
+    'psychiatrist', 'psychiatry', 'psychologist', 'psychology', 'therapist', 'mental health', 'counselor',
+    
+    // Internal Organs
+    'gastroenterologist', 'gastroenterology', 'gastrologist', 'stomach doctor',
+    'nephrologist', 'nephrology',
+    'urologist', 'urology',
+    'hepatologist', 'hepatology',
+    'pulmonologist', 'pulmonology', 'chest specialist',
+    
+    // Bones & Muscles
+    'bone doctor', 'physiotherapist', 'physiotherapy', 'physio', 'chiropractor', 'chiropractic',
+    'rheumatologist', 'rheumatology',
+    
+    // Specialized
+    'oncologist', 'oncology', 'cancer specialist',
+    'endocrinologist', 'endocrinology', 'diabetologist',
+    'surgeon', 'general surgery'
+  ];
 
   /**
    * Extracts entities (Date, Time, Department) from text
@@ -83,13 +126,140 @@ export class ExtractionService {
    * @param dept The department keyword found
    * @returns Normalized department name
    */
+  /**
+   * Normalize department/specialist names to standard department names
+   * Maps various specialist and colloquial terms to proper department names
+   */
   private normalizeDepartment(dept: string): string {
     const mapping: { [key: string]: string } = {
-      'cardiologist': 'cardiology',
-      'neurologist': 'neurology',
-      'dermatologist': 'dermatology',
-      'orthopedist': 'orthopedics'
+      // Cardiology
+      'cardiologist': 'Cardiology',
+      'cardiology': 'Cardiology',
+      
+      // Neurology
+      'neurologist': 'Neurology',
+      'neurology': 'Neurology',
+      
+      // Dermatology
+      'dermatologist': 'Dermatology',
+      'dermatology': 'Dermatology',
+      
+      // Orthopedics
+      'orthopedist': 'Orthopedics',
+      'orthopedics': 'Orthopedics',
+      'ortho': 'Orthopedics',
+      'bone doctor': 'Orthopedics',
+      
+      // Dentistry
+      'dentist': 'Dentistry',
+      'dental': 'Dentistry',
+      'dentistry': 'Dentistry',
+      
+      // General / Primary Care
+      'general': 'General Practice',
+      'gp': 'General Practice',
+      'general practitioner': 'General Practice',
+      'general practice': 'General Practice',
+      'physician': 'General Medicine',
+      'general medicine': 'General Medicine',
+      'family doctor': 'Family Medicine',
+      'family medicine': 'Family Medicine',
+      
+      // Eye Care
+      'ophthalmologist': 'Ophthalmology',
+      'ophthalmology': 'Ophthalmology',
+      'optometrist': 'Optometry',
+      'optometry': 'Optometry',
+      'eye doctor': 'Ophthalmology',
+      'eye specialist': 'Ophthalmology',
+      
+      // ENT
+      'ent': 'Otolaryngology',
+      'ent specialist': 'Otolaryngology',
+      'otolaryngologist': 'Otolaryngology',
+      'otolaryngology': 'Otolaryngology',
+      
+      // Women's Health
+      'gynecologist': 'Gynecology',
+      'gynecology': 'Gynecology',
+      'gynae': 'Gynecology',
+      'gynac': 'Gynecology',
+      'obgyn': 'Obstetrics and Gynecology',
+      'obstetrics and gynecology': 'Obstetrics and Gynecology',
+      
+      // Pediatrics
+      'pediatrician': 'Pediatrics',
+      'pediatrics': 'Pediatrics',
+      'child doctor': 'Pediatrics',
+      'paediatrician': 'Pediatrics',
+      
+      // Mental Health
+      'psychiatrist': 'Psychiatry',
+      'psychiatry': 'Psychiatry',
+      'psychologist': 'Psychology',
+      'psychology': 'Psychology',
+      'therapist': 'Mental Health',
+      'mental health': 'Mental Health',
+      'counselor': 'Mental Health',
+      
+      // Gastroenterology
+      'gastroenterologist': 'Gastroenterology',
+      'gastroenterology': 'Gastroenterology',
+      'gastrologist': 'Gastroenterology',
+      'stomach doctor': 'Gastroenterology',
+      
+      // Nephrology
+      'nephrologist': 'Nephrology',
+      'nephrology': 'Nephrology',
+      
+      // Urology
+      'urologist': 'Urology',
+      'urology': 'Urology',
+      
+      // Hepatology
+      'hepatologist': 'Hepatology',
+      'hepatology': 'Hepatology',
+      
+      // Pulmonology
+      'pulmonologist': 'Pulmonology',
+      'pulmonology': 'Pulmonology',
+      'chest specialist': 'Pulmonology',
+      
+      // Physiotherapy
+      'physiotherapist': 'Physiotherapy',
+      'physiotherapy': 'Physiotherapy',
+      'physio': 'Physiotherapy',
+      
+      // Chiropractic
+      'chiropractor': 'Chiropractic',
+      'chiropractic': 'Chiropractic',
+      
+      // Rheumatology
+      'rheumatologist': 'Rheumatology',
+      'rheumatology': 'Rheumatology',
+      
+      // Oncology
+      'oncologist': 'Oncology',
+      'oncology': 'Oncology',
+      'cancer specialist': 'Oncology',
+      
+      // Endocrinology
+      'endocrinologist': 'Endocrinology',
+      'endocrinology': 'Endocrinology',
+      'diabetologist': 'Endocrinology',
+      
+      // Surgery
+      'surgeon': 'General Surgery',
+      'general surgery': 'General Surgery'
     };
-    return mapping[dept] || dept;
+    
+    return mapping[dept.toLowerCase()] || this.capitalize(dept);
+  }
+
+  /**
+   * Capitalize first letter of a string
+   */
+  private capitalize(s: string): string {
+    return s.charAt(0).toUpperCase() + s.slice(1);
   }
 }
