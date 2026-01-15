@@ -176,17 +176,6 @@ curl -X POST http://localhost:3000/api/v1/parse \
 - Framer Motion
 - Lucide Icons
 
-## 🎯 Supported Departments
-
-| Keyword                    | Normalized  |
-| -------------------------- | ----------- |
-| cardiology, cardiologist   | Cardiology  |
-| neurology, neurologist     | Neurology   |
-| dentist                    | Dentist     |
-| dermatology, dermatologist | Dermatology |
-| orthopedics, orthopedist   | Orthopedics |
-| general                    | General     |
-
 ## 📊 Performance
 
 - **API Response Time**: ~100ms (text), ~2s (OCR)
