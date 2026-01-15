@@ -1,0 +1,101 @@
+@import "tailwindcss";
+
+body {
+  background-color: rgb(2 6 23);
+  color: rgb(241 245 249);
+}
+
+.glass-panel {
+  background-color: rgb(15 23 42 / 0.8);
+  backdrop-filter: blur(16px);
+  border: 1px solid rgb(16 185 129 / 0.2);
+  box-shadow: 0 20px 25px -5px rgb(6 78 59 / 0.2);
+  border-radius: 1rem;
+}
+
+.feature-card {
+  transition: all 0.3s ease;
+}
+
+.feature-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgb(16 185 129 / 0.15);
+}
+
+.input-area {
+  width: 100%;
+  padding: 1rem;
+  border-radius: 0.75rem;
+  border: 1px solid rgb(51 65 85);
+  background-color: rgb(30 41 59 / 0.5);
+  backdrop-filter: blur(4px);
+  color: rgb(241 245 249);
+  outline: none;
+  resize: none;
+  transition: all 0.2s;
+}
+
+.input-area::placeholder {
+  color: rgb(100 116 139);
+}
+
+.input-area:focus {
+  border-color: rgb(16 185 129);
+  box-shadow: 0 0 0 2px rgb(16 185 129 / 0.3);
+}
+
+.input-area:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.btn-primary {
+  padding: 0.75rem 1.5rem;
+  background: linear-gradient(to right, rgb(5 150 105), rgb(4 120 87));
+  color: white;
+  border-radius: 0.75rem;
+  font-weight: 500;
+  transition: all 0.2s;
+  box-shadow: 0 10px 15px -3px rgb(6 78 59 / 0.3);
+  cursor: pointer;
+  border: none;
+}
+
+.btn-primary:hover {
+  background: linear-gradient(to right, rgb(16 185 129), rgb(5 150 105));
+  box-shadow: 0 10px 15px -3px rgb(16 185 129 / 0.3);
+  transform: translateY(-1px);
+}
+
+.btn-primary:active {
+  transform: scale(0.98);
+}
+
+.btn-primary:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* ECG Animation Styles */
+.ecg-svg {
+  display: block;
+  filter: drop-shadow(0 0 6px rgb(16 185 129 / 0.6));
+}
+
+.beat-loader {
+  stroke: rgb(16 185 129);
+  stroke-dasharray: 175;
+  stroke-dashoffset: 350;
+  animation: draw 2.5s linear infinite;
+}
+
+@keyframes draw {
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+/* Smooth scrolling */
+html {
+  scroll-behavior: smooth;
+}
